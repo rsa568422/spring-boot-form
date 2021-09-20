@@ -1,7 +1,13 @@
 package com.bolsadeideas.springboot.form.app.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -18,11 +24,18 @@ public class FormController {
 	}
 
 	@PostMapping("/form")
-	public String procesar(Usuario usuario, Model model) {
+	public String procesar(@Valid Usuario usuario, BindingResult result, Model model) {
 
 		model.addAttribute("title", "Resultado form");
+		
+		if (result.hasErrors()) {
+			Map<String, String> errores = new HashMap<>();
+			result.getFieldErrors().forEach(error -> errores.put(error.getField(), String.format("El campo %s %s", error.getField(), error.getDefaultMessage())));
+			model.addAttribute("error", errores);
+			return "form";
+		}
+		
 		model.addAttribute("usuario", usuario);
-
 		return "resultado";
 	}
 
