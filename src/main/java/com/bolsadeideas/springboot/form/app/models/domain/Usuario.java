@@ -3,12 +3,12 @@ package com.bolsadeideas.springboot.form.app.models.domain;
 import javax.validation.constraints.NotEmpty;
 
 public class Usuario {
-	
+
 	private String identificador;
-	
+
 	@NotEmpty
 	private String nombre;
-	
+
 	@NotEmpty
 	private String apellido;
 
