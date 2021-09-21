@@ -19,6 +19,7 @@ public class FormController {
 	@GetMapping("/form")
 	public String form(Model model) {
 		model.addAttribute("title", "Formulario usuarios");
+		model.addAttribute("usuario", new Usuario());
 
 		return "form";
 	}
@@ -27,14 +28,16 @@ public class FormController {
 	public String procesar(@Valid Usuario usuario, BindingResult result, Model model) {
 
 		model.addAttribute("title", "Resultado form");
-		
+
 		if (result.hasErrors()) {
 			Map<String, String> errores = new HashMap<>();
-			result.getFieldErrors().forEach(error -> errores.put(error.getField(), String.format("El campo %s %s", error.getField(), error.getDefaultMessage())));
+			result.getFieldErrors().forEach(error -> errores.put(error.getField(), String.format(	"El campo %s %s",
+																									error.getField(),
+																									error.getDefaultMessage()	)));
 			model.addAttribute("error", errores);
 			return "form";
 		}
-		
+
 		model.addAttribute("usuario", usuario);
 		return "resultado";
 	}
