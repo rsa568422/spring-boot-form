@@ -3,8 +3,8 @@ package com.bolsadeideas.springboot.form.app.models.domain;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
-import com.bolsadeideas.springboot.form.app.validations.IdentificadorRegex;
-import com.bolsadeideas.springboot.form.app.validations.Requerido;
+import com.bolsadeideas.springboot.form.app.validations.labels.IdentificadorRegex;
+import com.bolsadeideas.springboot.form.app.validations.labels.Requerido;
 
 public class Usuario {
 

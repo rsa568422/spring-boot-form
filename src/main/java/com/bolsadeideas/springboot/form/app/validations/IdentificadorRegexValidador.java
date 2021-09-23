@@ -3,6 +3,8 @@ package com.bolsadeideas.springboot.form.app.validations;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import com.bolsadeideas.springboot.form.app.validations.labels.IdentificadorRegex;
+
 public class IdentificadorRegexValidador implements ConstraintValidator<IdentificadorRegex, String> {
 
 	@Override

@@ -5,6 +5,8 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.util.StringUtils;
 
+import com.bolsadeideas.springboot.form.app.validations.labels.Requerido;
+
 
 public class RequeridoValidador implements ConstraintValidator<Requerido, String> {
 

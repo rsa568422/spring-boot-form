@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.form.app.validations;
+package com.bolsadeideas.springboot.form.app.validations.labels;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+
+import com.bolsadeideas.springboot.form.app.validations.IdentificadorRegexValidador;
 
 @Retention(RUNTIME)
 @Target({ FIELD, METHOD })
