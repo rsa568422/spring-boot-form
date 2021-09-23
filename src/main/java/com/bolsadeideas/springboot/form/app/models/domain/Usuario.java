@@ -1,31 +1,31 @@
 package com.bolsadeideas.springboot.form.app.models.domain;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.bolsadeideas.springboot.form.app.validations.IdentificadorRegex;
+import com.bolsadeideas.springboot.form.app.validations.Requerido;
 
 public class Usuario {
 
 	@IdentificadorRegex
 	private String identificador;
 
-	@NotBlank
+	@Requerido
 	private String nombre;
 
-	@NotBlank
+	@Requerido
 	private String apellido;
 
-	@NotBlank
+	@Requerido
 	@Size(min = 3, max = 8)
 	private String username;
 
-	@NotBlank
+	@Requerido
 	private String password;
 
-	@NotBlank
 	@Email
+	@Requerido
 	private String email;
 
 	public String getIdentificador() {
