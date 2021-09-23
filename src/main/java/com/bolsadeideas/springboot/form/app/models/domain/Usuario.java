@@ -1,6 +1,9 @@
 package com.bolsadeideas.springboot.form.app.models.domain;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.bolsadeideas.springboot.form.app.validations.labels.IdentificadorRegex;
@@ -27,6 +30,11 @@ public class Usuario {
 	@Email
 	@Requerido
 	private String email;
+	
+	@NotNull
+	@Min(5)
+	@Max(5000)
+	private Integer cuenta;
 
 	public String getIdentificador() {
 		return identificador;
@@ -74,6 +82,14 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Integer getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(Integer cuenta) {
+		this.cuenta = cuenta;
 	}
 
 }
