@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.bolsadeideas.springboot.form.app.editors.NombreMayusculasEditor;
+import com.bolsadeideas.springboot.form.app.models.domain.Pais;
 import com.bolsadeideas.springboot.form.app.models.domain.Usuario;
 import com.bolsadeideas.springboot.form.app.validations.UsuarioValidador;
 
@@ -43,6 +46,16 @@ public class FormController {
 		binder.registerCustomEditor(String.class, "apellido", new NombreMayusculasEditor());
 
 		binder.addValidators(validador);
+	}
+
+	@ModelAttribute("listaPaises")
+	public List<Pais> listaPaises() {
+		AtomicInteger i = new AtomicInteger(1);
+		return this	.paisesMap()
+					.entrySet()
+					.stream()
+					.map(entry -> new Pais(i.getAndIncrement(), entry.getKey(), entry.getValue()))
+					.collect(Collectors.toList());
 	}
 
 	@ModelAttribute("paises")
