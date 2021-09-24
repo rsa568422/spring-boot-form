@@ -33,15 +33,18 @@ public class Usuario {
 	@Email
 	@Requerido
 	private String email;
-	
+
 	@NotNull
 	@Min(5)
 	@Max(5000)
 	private Integer cuenta;
-	
+
 	@NotNull
 	@Past
 	private Date fechaNacimiento;
+
+	@Requerido
+	private String pais;
 
 	public String getIdentificador() {
 		return identificador;
@@ -105,6 +108,14 @@ public class Usuario {
 
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 
 }
