@@ -1,15 +1,9 @@
 package com.bolsadeideas.springboot.form.app.models.domain;
 
-//import javax.validation.constraints.NotNull;
-
-import com.bolsadeideas.springboot.form.app.validations.labels.Requerido;
-
 public class Pais {
 
-	//@NotNull
 	private Integer id;
 
-	@Requerido
 	private String codigo;
 
 	private String nombre;
