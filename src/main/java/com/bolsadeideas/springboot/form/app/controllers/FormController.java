@@ -42,7 +42,7 @@ public class FormController {
 
 	@Autowired
 	private PaisService paisService;
-	
+
 	@Autowired
 	private RoleService roleService;
 
@@ -66,6 +66,11 @@ public class FormController {
 		binder.addValidators(validador);
 	}
 
+	@ModelAttribute("generos")
+	public List<String> generos() {
+		return Arrays.asList("Hombre", "Mujer");
+	}
+
 	@ModelAttribute("listaPaises")
 	public List<Pais> listaPaises() {
 		return this.paisService.listar();
@@ -79,11 +84,11 @@ public class FormController {
 	@ModelAttribute("listaRolesString")
 	public List<String> listaRolesString() {
 		List<String> roles = new ArrayList<>();
-		
+
 		roles.add("ROLE_ADMIN");
 		roles.add("ROLE_USER");
 		roles.add("ROLE_MODERATOR");
-		
+
 		return roles;
 	}
 
