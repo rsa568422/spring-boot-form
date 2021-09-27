@@ -21,12 +21,14 @@
 		<li th:text="${usuario.email}"></li>
 		<li th:text="${usuario.cuenta}"></li>
 		<li th:text="${#dates.format(usuario.fechaNacimiento, 'dd/MM/yyyy')}"></li>
+		<li th:text="'Género: ' + ${usuario.genero}"></li>
 	</ul>
 
 	<div>Roles</div>
 
 	<ul>
-		<li th:each="role: ${usuario.roles}" th:text="${role.id} + ': ' + ${role.nombre} + ' => ' + ${role.role}"></li>
+		<li th:each="role: ${usuario.roles}"
+			th:text="${role.id} + ': ' + ${role.nombre} + ' => ' + ${role.role}"></li>
 	</ul>
 
 </body>

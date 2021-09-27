@@ -7,7 +7,7 @@ import com.bolsadeideas.springboot.form.app.models.domain.Pais;
 public interface PaisService {
 
 	public List<Pais> listar();
-	
+
 	public Pais obtenerPorId(Integer id);
-	
+
 }
