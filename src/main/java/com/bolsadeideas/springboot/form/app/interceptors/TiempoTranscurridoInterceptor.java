@@ -16,34 +16,43 @@ import org.springframework.web.servlet.ModelAndView;
 public class TiempoTranscurridoInterceptor implements HandlerInterceptor {
 
 	private static final Logger logger = LoggerFactory.getLogger(TiempoTranscurridoInterceptor.class);
-	
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
+
+		if (request.getMethod().equalsIgnoreCase("POST")) {
+			return true;
+		}
+
 		if (handler instanceof HandlerMethod) {
 			HandlerMethod method = (HandlerMethod) handler;
 			logger.info("Es un método del controlador: ".concat(method.getMethod().getName()));
 		}
-		
+
 		logger.info("TiempoTranscurridoInterceptor: preHandle() entrando ...");
 		logger.info("Interceptando: ".concat(handler.toString()));
-		
+
 		request.setAttribute("tiempoInicio", System.currentTimeMillis());
-		
+
 		Random random = new Random();
 		Thread.sleep(random.nextInt(500));
-		
+
 		return true;
 	}
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
+
+		if (request.getMethod().equalsIgnoreCase("POST")) {
+			return;
+		}
+
 		long tiempoFin = System.currentTimeMillis();
 		long tiempoInicio = (Long) request.getAttribute("tiempoInicio");
 		long tiempoTranscurrido = tiempoFin - tiempoInicio;
-		
+
 		if (handler instanceof HandlerMethod && modelAndView != null) {
 			modelAndView.addObject("tiempoTranscurrido", tiempoTranscurrido);
 		}

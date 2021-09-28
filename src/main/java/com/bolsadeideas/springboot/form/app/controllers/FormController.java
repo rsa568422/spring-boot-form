@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.thymeleaf.util.DateUtils;
 
 import com.bolsadeideas.springboot.form.app.editors.NombreMayusculasEditor;
 import com.bolsadeideas.springboot.form.app.editors.PaisPropertyEditor;
@@ -128,10 +129,15 @@ public class FormController {
 	public String form(Model model) {
 		Usuario usuario = new Usuario();
 
-		usuario.setIdentificador("123.456.789-K");
+		usuario.setIdentificador("12.345.678-K");
 		usuario.setNombre("John");
 		usuario.setApellido("Doe");
 		usuario.setHabilitar(true);
+		usuario.setGenero("Hombre");
+		usuario.setEmail("pruebas@email.com");
+		usuario.setUsername("pruebas");
+		usuario.setFechaNacimiento(DateUtils.createNow().getTime());
+		usuario.setCuenta(6);
 		usuario.setValorSecreto("Algún valor secreto ****");
 		usuario.setPais(new Pais(3, "CL", "Chile"));
 		usuario.setRoles(Arrays.asList(new Role(2, "Usuario", "ROLE_USER")));
