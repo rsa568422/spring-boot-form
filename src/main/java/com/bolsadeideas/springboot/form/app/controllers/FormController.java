@@ -147,17 +147,19 @@ public class FormController {
 
 		if (result.hasErrors()) {
 			model.addAttribute("title", "Resultado form");
-			
+
 			return "form";
 		}
 
 		return "redirect:/ver";
 	}
-	
-	@GetMapping("/ver")
-	public String ver(@SessionAttribute(name="usuario", required = false) Usuario usuario, Model model, SessionStatus status) {
 
-		if (usuario == null) return "redirect:/form";
+	@GetMapping("/ver")
+	public String ver(@SessionAttribute(name = "usuario", required = false) Usuario usuario, Model model,
+			SessionStatus status) {
+
+		if (usuario == null)
+			return "redirect:/form";
 
 		model.addAttribute("title", "Resultado form");
 

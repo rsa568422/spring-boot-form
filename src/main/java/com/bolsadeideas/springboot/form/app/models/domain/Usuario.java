@@ -55,7 +55,7 @@ public class Usuario {
 
 	@Requerido
 	private String genero;
-	
+
 	private String valorSecreto;
 
 	public String getIdentificador() {
