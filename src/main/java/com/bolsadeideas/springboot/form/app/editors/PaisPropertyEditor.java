@@ -11,15 +11,18 @@ import com.bolsadeideas.springboot.form.app.services.PaisService;
 public class PaisPropertyEditor extends PropertyEditorSupport {
 
 	@Autowired
-	private PaisService paisService;
+	private PaisService service;
 
 	@Override
-	public void setAsText(String id) throws IllegalArgumentException {
+	public void setAsText(String idString) throws IllegalArgumentException {
+
 		try {
-			this.setValue(this.paisService.obtenerPorId(Integer.parseInt(id)));
+			Integer id = Integer.parseInt(idString);
+			this.setValue(service.obtenerPorId(id));
 		} catch (NumberFormatException e) {
-			this.setValue(null);
+			setValue(null);
 		}
+
 	}
 
 }

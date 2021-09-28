@@ -8,17 +8,18 @@ import org.springframework.stereotype.Component;
 import com.bolsadeideas.springboot.form.app.services.RoleService;
 
 @Component
-public class RolePropertyEditor extends PropertyEditorSupport {
-	
-	@Autowired
-	private RoleService roleService;
+public class RolesEditor extends PropertyEditorSupport{
 
+	@Autowired
+	private RoleService service;
+	
 	@Override
-	public void setAsText(String id) throws IllegalArgumentException {
+	public void setAsText(String text) throws IllegalArgumentException {
 		try {
-			this.setValue(this.roleService.obtenerPorId(Integer.parseInt(id)));
-		} catch (NumberFormatException e) {
-			this.setValue(null);
+			Integer id = Integer.parseInt(text);
+			setValue(service.obtenerPorId(id));
+		} catch(NumberFormatException e) {
+			setValue(null);
 		}
 	}
 

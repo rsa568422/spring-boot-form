@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.form.app.services.implementations;
+package com.bolsadeideas.springboot.form.app.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,15 +6,13 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bolsadeideas.springboot.form.app.models.domain.Role;
-import com.bolsadeideas.springboot.form.app.services.RoleService;
 
 @Service
 public class RoleServiceImpl implements RoleService {
-	
-	private List<Role> roles;
 
+	private List<Role> roles;
 	public RoleServiceImpl() {
-		this.roles = new ArrayList<Role>();
+		this.roles = new ArrayList<>();
 		this.roles.add(new Role(1, "Administrador", "ROLE_ADMIN"));
 		this.roles.add(new Role(2, "Usuario", "ROLE_USER"));
 		this.roles.add(new Role(3, "Moderador", "ROLE_MODERATOR"));
@@ -22,15 +20,19 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public List<Role> listar() {
-		return this.roles;
+		return roles;
 	}
 
 	@Override
 	public Role obtenerPorId(Integer id) {
-		return roles.stream()
-					.filter(role -> id.equals(role.getId()))
-					.findFirst()
-					.orElse(null);
+        Role resultado = null;
+        for(Role role: roles) {
+        	if(id == role.getId()) {
+        		resultado = role;
+        		break;
+        	}
+        }
+		return resultado;
 	}
 
 }
