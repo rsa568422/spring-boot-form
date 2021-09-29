@@ -9,14 +9,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
-
+	
 	@Autowired
 	@Qualifier("tiempoTranscurridoInterceptor")
 	private HandlerInterceptor tiempoTranscurridoInterceptor;
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(this.tiempoTranscurridoInterceptor).addPathPatterns("/form/**");
+		registry.addInterceptor(tiempoTranscurridoInterceptor).addPathPatterns("/form/**");
 	}
 
 }
